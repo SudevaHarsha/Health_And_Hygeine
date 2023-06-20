@@ -1,0 +1,267 @@
+.resources-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .slider-section {
+    margin: 30px auto;
+    width: 90%;
+    height: 60vh; /* Adjust the height as desired */
+    /* Add slider styles here */
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .who-section {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+  }
+  
+  .who-description {
+    width: 40%;
+    /* Add styles for the WHO description */
+  }
+  
+  .who-image {
+    width: 60%;
+    overflow: hidden;
+    object-fit: cover;
+    /* Add styles for the WHO image */
+  }
+
+  .who-image img{
+    width: 100%;
+    height: 500px;
+    object-fit: contain;
+  }
+  
+  .vaccination-section {
+    margin-top: 40px;
+  }
+  
+  .vaccination-heading {
+    font-weight: bold;
+    font-size: 50px;
+    text-align: center;
+    /* Add styles for the vaccination heading */
+  }
+  
+  .vaccination-video {
+    width: 80%;
+    margin: 10px auto;
+    /* Add styles for the vaccination video */
+  }
+
+  .vaccination-video iframe{
+    width: 100%;
+    height: 400px;
+  }
+  
+  .disease-prevention-section {
+    display: flex;
+    margin-top: 40px;
+    gap: 30px;
+  }
+  
+  .disease-prevention-gif {
+    width: 60%;
+    /* Add styles for the disease prevention GIF */
+  }
+
+  .disease-prevention-gif img{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .disease-prevention-description {
+    width: 40%;
+    /* Add styles for the disease prevention description */
+  }
+  
+  .yoga-section {
+    display: flex;
+    margin-top: 40px;
+    gap: 30px;
+  }
+  
+  .yoga-left-image,
+  .yoga-right-image {
+    width: 30%;
+    /* Add styles for the yoga images */
+  }
+
+  .yoga-left-image img,
+  .yoga-right-image img {
+    width: 100%;
+    height: 270px;
+  }
+  
+  .yoga-content {
+    width: 40%;
+    text-align: center;
+    /* Add styles for the yoga content */
+  }
+
+  .yoga-video{
+    width: 70%;
+    margin: 30px auto;
+  }
+
+  .yoga-video iframe{
+    width: 100%;
+    height: 400px;
+  }
+  
+  .download-cards-section {
+    margin-top: 40px;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    width: 30%;
+    position: relative;
+    overflow: hidden;
+    /* Add styles for the download cards */
+  }
+  
+  .card:hover .card-overlay {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 100%;
+    /* Add styles for the card image */
+  }
+  
+  .card-overlay {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 100px;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 70%;
+    color: #fff;
+    transform: scale(0);
+    opacity: 1;
+    transition: all 0.3s;
+  }
+  
+  .card:hover .card-overlay {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .card-overlay-icon {
+    margin-left: 20px;
+    margin-top: -25px;
+  }
+  
+  
+  .faq-section {
+    margin-top: 20px;
+  }
+  
+  .faq-question {
+    margin-bottom: 20px;
+  }
+  
+  .faq-question-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    padding: 12px;
+    border-radius: 4px;
+  }
+  
+  .faq-question-header:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .faq-question-header h3 {
+    margin: 0;
+  }
+  
+  .faq-answer {
+    background-color: #f8f8f8;
+    padding: 12px;
+    border-radius: 4px;
+  }
+  
+  .faq-arrow {
+    font-size: 16px;
+    transition: transform 0.2s;
+  }
+  
+  .faq-question-header.expanded .faq-arrow {
+    transform: rotate(180deg);
+  }
+  
+/*   .video-container {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .video-container video {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .play-button svg {
+    fill: #fff;
+    width: 40px;
+    height: 40px;
+  } */
