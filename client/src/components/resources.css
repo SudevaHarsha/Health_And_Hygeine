@@ -227,6 +227,7 @@
 
   .faq-question-header h3{
     font-size: 20px;
+    color: black;
   }
   
   .faq-question-header:hover {
@@ -241,11 +242,13 @@
     background-color: #f8f8f8;
     padding: 12px;
     border-radius: 4px;
+    color: #000;
   }
   
   .faq-arrow {
     font-size: 16px;
     transition: transform 0.2s;
+    color: #000;
   }
   
   .faq-question-header.expanded .faq-arrow {
@@ -261,6 +264,10 @@
     .who-section {
       display: block;
       width: 100%;
+    }
+
+    .who-section h2{
+      text-align: center;
     }
     
     .who-description {

@@ -223,7 +223,7 @@ The type of organism determines what nutrients it needs and how it obtains them.
         </div>
       </section>
 
-      <section className="faq-section" data-aos="fade">
+      <section className="faq-section">
         {faqs.map((faq)=>{ return <>
           <div className="faq-question" key={faq.id}>
             <div

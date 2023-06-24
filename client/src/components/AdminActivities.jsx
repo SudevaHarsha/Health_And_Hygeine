@@ -11,11 +11,14 @@ const AdminActivities = () => {
     const [venue,setVenue] = useState("");
     const [day,setDay] = useState("");
     const [contact,setContact] = useState("");
+    const [addActivity,setAddActivity] = useState(false);
 
     const [fullActivities,setFullActivities] = useState(); 
     const [activities, setActivities] = useState([]);
     const [fullComments,setFullComments] = useState([]);
     const [auth] = useAuth();
+
+    console.log(addActivity);
 
     const activitiesImages = [
         'https://s3-ap-northeast-1.amazonaws.com/assets-eaglenews/2018/05/Australia-Binhi-cleanup-03.jpg',      
@@ -39,6 +42,7 @@ const AdminActivities = () => {
     }
 
     const createActivity = async()=>{
+      setAddActivity(!addActivity);
         const res = await axios.post("http://localhost:3500/api/v1/activity/create-activity",{
             name,
             venue,
@@ -57,6 +61,9 @@ const AdminActivities = () => {
         AOS.init({duration:2000,offset:300});
       },[])
 
+      const marginButton ={
+        marginBottom:'20px',
+      }
   return (
     <Layout>
       <div className="scrolling-text-container" data-aos="fade">
@@ -78,7 +85,14 @@ const AdminActivities = () => {
       </div>
 
       <div className="activities-container">
-        <div className="home-card-comment-input">
+        <button onClick={()=>{
+          setAddActivity(!addActivity)
+          }} className='activity-button' style={marginButton}>
+            Create New Activity
+            </button>
+        <div className={`admin-create-activity ${addActivity ? 'create-act' : ''}`}>
+          <div className='admin-create-activity2'>
+            <div className='admin-create-activity3'>
             <input
             type="text"
             placeholder="enter activity name"
@@ -105,8 +119,10 @@ const AdminActivities = () => {
             />
             <button onClick={()=>{
             createActivity()}
-            }>Add Comment</button>
-        </div> 
+            }>Add activity</button>
+        </div>
+        </div>
+        </div>
         {activities.map((activity,i) => (
           <div className="activities-card" data-aos="fade-down" key={activity.id}>
             <div className="activities-card-image">

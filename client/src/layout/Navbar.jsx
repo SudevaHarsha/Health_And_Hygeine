@@ -1,5 +1,8 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
+
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Navbar = ()=>{
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -7,6 +10,10 @@ const Navbar = ()=>{
     const toggleMobileMenu = () => {
       setIsMobileMenuOpen(!isMobileMenuOpen);
     };
+
+    useEffect(()=>{
+      AOS.init({duration:2000,offset:300});
+    },[])
     return <>
               <nav className="mobile-navbar">
               <div className="mobile-navbar-logo">
