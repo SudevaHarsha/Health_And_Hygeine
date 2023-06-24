@@ -94,7 +94,7 @@ const News = () => {
   },[prevId]) */
   return (
     <Layout>
-        <h1>News</h1>
+        <h1 className='heading'>News</h1>
         <div className="news-page">
         {filteredNewsData.map((news) => (
           <NewsCard key={news.id} news={news} onClick={() => handleCardClick(news.id)} />

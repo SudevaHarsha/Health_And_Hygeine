@@ -4,37 +4,23 @@ import { useNavigate,useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import "../styles/AuthStyles.css"
 import Layout from '../layout/Layout';
+import { useAuth } from '../context/Auth';
 
 const GetInvolved = () => {
 
-  /* const [name,setName] = useState(""); */
-    const [useraId,setUseraId]= useState();
+    const [userId,setUserId]= useState();
     const [email,setEmail]=useState();
     const [contact,setContact]=useState();
     const [activity,setActivity]=useState();
     const [otherPage,setOtherPage] = useState();
-    /* const [password,setPassword] = useState("");
-    const [phone,setPhone] = useState("");
-    const [address,setAddress] = useState("");
-    const [answer,setAnswer] = useState(""); */
-    const navigate = useNavigate();
+
+    const {auth} = useAuth();
+    setUserId(auth.user.id);
     const location = useLocation();
-    const {userId,uname,aname,aid} = location.state;
-    console.log(userId,aid,aname,uname);
-    useEffect(()=>{
-      setUseraId(userId);
-      setActivity(aid);
-      setOtherPage(true);
-    },[userId,aid])
-    
+
     const handleSubmit = async(e) =>{
-      setUseraId(userId);
       setActivity(aid);
       e.preventDefault();
-      /* console.log(auth.user);
-      console.log("submitted");
-      console.log(userId);
-      console.log(activity,email,phone); */
       const productData = new FormData();
           productData.append("userId", userId);
           productData.append("activity", activity);
@@ -63,8 +49,8 @@ const GetInvolved = () => {
           <div className="mb-3">
               <input
                 type="text"
-                /* value={useraId}
-                onChange={(e) => setUseraId(e.target.value)} */
+                value={useraId}
+                onChange={(e) => setUseraId(e.target.value)}
                 className="form-control"
                 id="exampleInputEmail1"
                 placeholder={uname}
@@ -87,8 +73,8 @@ const GetInvolved = () => {
           <div className="mb-3">
             <input
               type="text"
-              /* value={activity}
-              onChange={(e) => setActivity(e.target.value)} */
+              value={activity}
+              onChange={(e) => setActivity(e.target.value)}
               className="form-control"
               id="exampleInputPassword1"
               placeholder={aname}

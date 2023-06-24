@@ -2,6 +2,9 @@ import React from 'react'
 import Layout from '../layout/Layout';
 import img1 from "../images/image1.jpg"
 import img2 from "../images/image2.jpg"
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from 'react';
 
 const AboutUs = () => {
   const cardsData = [
@@ -32,18 +35,21 @@ const AboutUs = () => {
     },
   ];
 
+  useEffect(()=>{
+    AOS.init({duration:2000,offset:300});
+  },[])
+
   return (
     <Layout>
-      <h1>AboutUs</h1>
+      <h1 className='heading' data-aos="fade-down">AboutUs</h1>
       <div className="about-us-page">
-      <h1>About Us</h1>
       <div className="cards-container-about">
         {cardsData.map((card, index) => (
           <div key={card.id} className={`card-about ${index % 2 === 0 ? 'image-left' : 'image-right'}`}>
-            <div className="card-image-about">
+            <div className="card-image-about" data-aos={`fade-${index % 2 === 0 ? 'right' : 'left'}`}>
               <img src={card.image} alt={`Image ${card.id}`} />
             </div>
-            <div className="card-description-about">
+            <div className="card-description-about" data-aos={`fade-${index % 2 === 0 ? 'left' : 'right'}`}>
               <p>{card.description}</p>
             </div>
           </div>

@@ -1,45 +1,149 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Layout from '../layout/Layout';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/Auth';
+import axios from 'axios';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Testimonials = () => {
 
   const remainingRegistrations = 20;
   const navigate = useNavigate();
 
-  const handleInvolvement = ()=>{
-    navigate("/get-involved");
-  }
+  const [auth]=useAuth();
+  const [commentOpen,setCommentOpen] = useState(true);
+  const [fullComments,setFullComments] = useState([]);
+    const [open,setOpen]=useState(0);
+    const [open2,setOpen2]=useState(0);
+    const [activities, setActivities] = useState([]);
+    const [userId,setUserId]= useState();
+    const [userId2,setUserId2]= useState();
+    const [id,setId]=useState();
+    const [name,setName]=useState();
+    const [aname,setAname]=useState();
+    const [activity,setActivity]=useState();
+    const [activity2,setActivity2]=useState();
+    const [description,setDescription]=useState();
+    const [comment,setComment]=useState();
+    const [email,setEmail]=useState();
+    const [contact,setContact]=useState();
+    const [showComments, setShowComments] = useState(false);
+
+    const handleInvolvement = (aid,aname,userId,uname)=>{
+      navigate("/get-involved",{state:{userId,aid,aname,uname}});
+    }
+    
+    /* const arrayImages =["https://tse1.mm.bing.net/th?id=OIP.1YM53mG10H_U25iPjop83QHaEo&pid=Api&rs=1&c=1&qlt=95&w=198&h=124","https://tse1.mm.bing.net/th?id=OIP.HxV79tFMPfBAIo0BBF-sOgHaEy&pid=Api&rs=1&c=1&qlt=95&w=192&h=124","https://tse1.mm.bing.net/th?id=OIP.fzSnClvueUiDCZNJINMWywHaEK&pid=Api&rs=1&c=1&qlt=95&w=221&h=124"]; */
+    useEffect(()=>{
+        getAllActivities();
+    },[]);
+    useEffect(()=>{
+      AOS.init({duration:2000,offset:300});
+    },[])
+    const getAllActivities =async()=>{
+        try{
+            const res = await axios.get("http://localhost:3500/api/v1/activity/activity");
+            setActivities(res?.data?.activity);
+            console.log(auth);            
+        }catch(error){
+            console.log(error);
+        }       
+    }
+    const getAllCommentsById =async(id)=>{
+        try{
+            console.log(id);
+            setId(id);
+            setShowComments(!showComments);
+            console.log(showComments);
+            const res = await axios.get(`http://localhost:3500/api/v1/comment/comment/${id}`);
+            setComment(res?.data?.comment);
+            setCommentOpen(false);
+            console.log(res);
+            
+        }catch(error){
+            console.log(error);
+        }        
+    }
+    console.log(showComments);
+    const allComments=async()=>{
+      const res = await axios.get(`http://localhost:3500/api/v1/comment/all-comment`);
+      setFullComments(res?.data)
+    }
+    console.log(fullComments);
+    const handleSubmit = async(e) =>{
+        e.preventDefault();
+        /* console.log(auth.user);
+        console.log("submitted");
+        console.log(userId);
+        console.log(activity,email,phone); */
+        const productData = new FormData();
+            productData.append("userId", userId);
+            productData.append("activity", activity);
+            productData.append("email", email);
+            productData.append("contact", contact);
+        try{
+            const res = await axios.post("http://localhost:3500/api/v1/activity/activity-register",productData);
+            if(res.data.success){
+                console.log(res.data.message);
+            }
+            else{
+                console.log(res.data.message);
+            }
+            setOpen(0);
+        } catch(err){
+            console.log(err);
+            console.log("something went wrong");
+        }
+
+
+    }
+    const writeComment=async(aid)=>{
+        /* e.preventDefault(); */
+        setOpen2(1);
+        /* setUserId2(auth.user.id);
+        setActivity2(aid);
+        console.log(activity2); */
+        /* setActivity2(aId); */
+     /*    const commentData=FormData();
+        commentData.append("userId", userId);
+        commentData.append("activity", activity);
+        commentData.append("description",description); */
+        try{
+            const res = await axios.post("http://localhost:3500/api/v1/comment/create-comment",{userId:auth.user.id,activity:aid,description});
+            if(res.data.success){
+                console.log(res.data.message);
+            }
+            else{
+                console.log(res.data.message);
+            }
+            setDescription("");
+            allComments();
+            /* getAllCommentsById(); */
+        } catch(err){
+            console.log(err);
+            console.log("something went wrong");
+        }
+    }
   
-  const activities = [
-    {
-      id: 1,
-      image: 'https://s3-ap-northeast-1.amazonaws.com/assets-eaglenews/2018/05/Australia-Binhi-cleanup-03.jpg',
-      name: 'Activity 1',
-      day: 'Monday',
-      place: 'Park',
-      status: 'About to start',
-    },
-    {
-      id: 2,
-      image: 'activity2.jpg',
-      name: 'Activity 2',
-      day: 'Tuesday',
-      place: 'Gym',
-      status: 'Completed',
-    },
+  const activitiesImages = [
+      'https://s3-ap-northeast-1.amazonaws.com/assets-eaglenews/2018/05/Australia-Binhi-cleanup-03.jpg',      
+      'activity2.jpg',
     // Add more activities here
   ];
+  useEffect(()=>{
+    allComments();
+  },[])
   return (
     <Layout>
-      <div className="scrolling-text-container">
+      <div className="scrolling-text-container" data-aos="fade">
         <div className="scrolling-text">
           <p>Hurry up there are only 10 places left for the free sanitizers distribution.</p>
         </div>
       </div>
       {/* <marquee>This is a scrolling text</marquee> */}
       <div className="activities-page">
-      <div className="activities-header-image">
+      <div className="activities-header-image" data-aos="flip-left">
         <img src="https://tse4.mm.bing.net/th?id=OIP.1C6r-zxwf5cQyQyY4DTs_gHaEK&pid=Api&P=0&h=180" />
         <div className="activities-header-text">
           <h1>Welcome to Activities Page</h1>
@@ -51,10 +155,10 @@ const Testimonials = () => {
       </div>
 
       <div className="activities-container">
-        {activities.map((activity) => (
-          <div className="activities-card" key={activity.id}>
+        {activities.map((activity,i) => (
+          <div className="activities-card" data-aos="fade-down" key={activity.id}>
             <div className="activities-card-image">
-              <img src={activity.image} alt={activity.name} />
+              <img src={activitiesImages[i]} alt={activity.name} />
             </div>
             <div className="activities-card-details">
               <h3>{activity.name}</h3>
@@ -67,10 +171,32 @@ const Testimonials = () => {
               <p className='activity-status'>
                 <strong>Status:</strong> {activity.status}
               </p>
-              <button onClick={handleInvolvement} className='activity-button'>Get-Involved</button>
+              <button onClick={()=>handleInvolvement(activity._id,activity.name,auth.user.id,auth.user.name)} className='activity-button'>Get-Involved</button>
               <p className='activity-members'>
                  58 members registered
               </p>
+              <div className="home-card-comments">
+                <div className="home-card-comment-input">
+                  <input
+                    type="text"
+                    placeholder="Add a comment"
+                    value={description}
+                    onChange={(e)=>setDescription(e.target.value)}
+                  />
+                  <button onClick={()=>{
+                    writeComment(activity._id)}
+                    }>Add Comment</button>
+                </div>
+                <div className="home-card-comment-list" key={activity._id}>
+                  { fullComments.filter((c)=> c.activity===activity._id) 
+                  .map((comment, index) => (<div className='commentdes'>
+                    <p className='des1' key={index}>{comment.users.name} :</p>
+                    {/* <br className='break'></br> */}
+                    <p className='des2' key={index}>{comment.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         ))}

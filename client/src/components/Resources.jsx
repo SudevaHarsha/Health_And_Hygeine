@@ -3,7 +3,8 @@ import Layout from '../layout/Layout';
 import {FaDownload,FaChevronDown, FaChevronUp} from "react-icons/fa";
 import "./resources.css";
 import h1 from "../h1.pdf"
-import HeroCarousel from '../Carousel/HeroCarousel';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -106,9 +107,13 @@ const Resources = () => {
     }
   };
 
+  useEffect(()=>{
+    AOS.init({duration:2000,offset:300});
+  },[])
+
   return (
     <Layout>
-      <section className="slider-section">
+      <section className="slider-section" data-aos="zoom-in">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -133,22 +138,22 @@ const Resources = () => {
     <div className="resources-page">
       <section className="who-section">
         <div className="who-description">
-          <h2>About WHO</h2>
-          <p>Nutrition is the biochemical and physiological process by which an organism uses food to support its life. It provides organisms with nutrients, which can be metabolized to create energy and chemical structures. Failure to obtain sufficient nutrients causes malnutrition. Nutritional science is the study of nutrition, though it typically emphasizes human nutrition.
+          <h2 data-aos="fade">About WHO</h2>
+          <p data-aos="fade-right">Nutrition is the biochemical and physiological process by which an organism uses food to support its life. It provides organisms with nutrients, which can be metabolized to create energy and chemical structures. Failure to obtain sufficient nutrients causes malnutrition. Nutritional science is the study of nutrition, though it typically emphasizes human nutrition.
 
 The type of organism determines what nutrients it needs and how it obtains them. Organisms obtain nutrients by consuming organic matter, consuming inorganic matter, absorbing light, or some combination of these. Some can produce nutrients internally by consuming basic elements, while some must consume other organisms to obtain pre-existing nutrients. All forms of life require carbon, energy, and water as well as various other molecules. Animals require complex nutrients such as carbohydrates, lipids, and proteins, obtaining them by consuming other organisms. Humans have developed agriculture and cooking to replace foraging and advance human nutrition. Plants acquire nutrients through the soil and the atmosphere. Fungi absorb nutrients around them by breaking them down and absorbing them through the mycelium.</p>
         </div>
-        <div className="who-image">
+        <div className="who-image" data-aos="fade-left">
           <img src="https://i1.wp.com/www.ip-watch.org/weblog/wp-content/uploads/2016/01/WHO-logo.png?ssl=1" />
         </div>
       </section>
 
       <section className="vaccination-section">
-        <h2 className="vaccination-heading">Vaccination and Prevention</h2>
+        <h2 className="vaccination-heading" data-aos="fade">Vaccination and Prevention</h2>
         <div className="vaccination-video">
           <div id="player"></div>
           {/* <div id="placeholder-text">Click to play the video</div> */}
-          <iframe id="ytplayer"type="text/html" width="560" height="315" src="https://www.youtube.com/embed/O4vGOjOG2Ns?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe data-aos="zoom-in" id="ytplayer"type="text/html" width="560" height="315" src="https://www.youtube.com/embed/O4vGOjOG2Ns?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
         {/* <div className="video-container">
           <video controls>
@@ -163,10 +168,10 @@ The type of organism determines what nutrients it needs and how it obtains them.
       </section>
 
       <section className="disease-prevention-section">
-        <div className="disease-prevention-gif">
+        <div className="disease-prevention-gif" data-aos="fade-right">
           <img src="https://media0.giphy.com/media/3WuYIcGImWfkiYXxeI/200w.webp?cid=ecf05e47husy6shbs1gespg27k72wxxfovzh01pyd5fcg7gi&ep=v1_gifs_search&rid=200w.webp&ct=g" />
         </div>
-        <div className="disease-prevention-description">
+        <div className="disease-prevention-description" data-aos="fade-left">
           <p>Nutrition is the biochemical and physiological process by which an organism uses food to support its life. It provides organisms with nutrients, which can be metabolized to create energy and chemical structures. Failure to obtain sufficient nutrients causes malnutrition. Nutritional science is the study of nutrition, though it typically emphasizes human nutrition.
 
 The type of organism determines what nutrients it needs and how it obtains them. Organisms obtain nutrients by consuming organic matter, consuming inorganic matter, absorbing light, or some combination of these. Some can produce nutrients internally by consuming basic elements, while some must consume other organisms to obtain pre-existing nutrients. All forms of life require carbon, energy, and water as well as various other molecules. Animals require complex nutrients such as carbohydrates, lipids, and proteins, obtaining them by consuming other organisms. Humans have developed agriculture and cooking to replace foraging and advance human nutrition. Plants acquire nutrients through the soil and the atmosphere. Fungi absorb nutrients around them by breaking them down and absorbing them through the mycelium.</p>
@@ -174,41 +179,41 @@ The type of organism determines what nutrients it needs and how it obtains them.
       </section>
 
       <section className="yoga-section">
-        <div className="yoga-left-image">
+        <div className="yoga-left-image" data-aos="fade-right">
           <img src="https://tse2.mm.bing.net/th?id=OIP.8jjEffUwDFhQCzzVPwJmQAHaEp&pid=Api&P=0&h=180" />
         </div>
         <div className="yoga-content">
-          <h2>Yoga for Wellness</h2>
-          <p>Nutrition is the biochemical and physiological process by which an organism uses food to support its life. It provides organisms with nutrients, which can be metabolized to create energy and chemical structures. Failure to obtain sufficient nutrients causes malnutrition. Nutritional science is the study of nutrition, though it typically emphasizes human nutrition.
+          <h2 data-aos="fade">Yoga for Wellness</h2>
+          <p data-aos="flip-left">Nutrition is the biochemical and physiological process by which an organism uses food to support its life. It provides organisms with nutrients, which can be metabolized to create energy and chemical structures. Failure to obtain sufficient nutrients causes malnutrition. Nutritional science is the study of nutrition, though it typically emphasizes human nutrition.
 
 The type of organism determines what nutrients it needs and how it obtains them. Organisms obtain nutrients by consuming organic matter, consuming inorganic matter, absorbing light, or some combination of these. Some can produce nutrients internally by consuming basic elements, while some must consume other organisms to obtain pre-existing nutrients. All forms of life require carbon, energy, and water as well as various other molecules. Animals require complex nutrients such as carbohydrates, lipids, and proteins, obtaining them by consuming other organisms. Humans have developed agriculture and cooking to replace foraging and advance human nutrition. Plants acquire nutrients through the soil and the atmosphere. Fungi absorb nutrients around them by breaking them down and absorbing them through the mycelium.</p>
         </div>
-        <div className="yoga-right-image">
+        <div data-aos="fade-left" className="yoga-right-image">
           <img src="https://tse3.mm.bing.net/th?id=OIP.WKTRnMhuWeri92x5ow9ycgHaEK&pid=Api&P=0&h=180" />
         </div>
       </section>
 
-      <section className='yoga-video'>
+      <section className='yoga-video' data-aos="zoom-in">
           <iframe width="560" height="315" src="https://www.youtube.com/embed/Eml2xnoLpYE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </section>
 
       <section className="download-cards-section">
         <div className="card-container">
-          <div className="card">
+          <div className="card" data-aos="fade-right" data-aos-delay="0">
             <img src="https://tse3.mm.bing.net/th?id=OIP.cjI6TRCMfyRiefRsTOnCkwHaE8&pid=Api&P=0&h=180" alt="Card 1" className="card-image" />
             <div className="card-overlay">
               <FaDownload className="card-overlay-icon" onClick={handleDownload} />
               {/* Download PDF */}
             </div>
           </div>
-          <div className="card">
+          <div className="card" data-aos="fade-right" data-aos-delay="200">
             <img src="https://tse2.mm.bing.net/th?id=OIP.qPFEnPSlz_j8iyIEHb60ygHaFj&pid=Api&P=0&h=180" alt="Card 2" className="card-image" />
             <div className="card-overlay">
               <FaDownload className="card-overlay-icon" onClick={handleDownload} />
               {/* Download PDF */}
             </div>
           </div>
-          <div className="card">
+          <div className="card" data-aos="fade-right" data-aos-delay="400">
             <img src="https://tse3.mm.bing.net/th?id=OIP.dw16OM11X4gZHjL42l0YSAHaD-&pid=Api&P=0&h=180" alt="Card 3" className="card-image" />
             <div className="card-overlay">
               <FaDownload className="card-overlay-icon" onClick={handleDownload} />
@@ -218,7 +223,7 @@ The type of organism determines what nutrients it needs and how it obtains them.
         </div>
       </section>
 
-      <section className="faq-section">
+      <section className="faq-section" data-aos="fade">
         {faqs.map((faq)=>{ return <>
           <div className="faq-question" key={faq.id}>
             <div

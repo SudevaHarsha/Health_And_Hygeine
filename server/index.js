@@ -7,6 +7,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import authRoutes from "./routes/authRoute.js";
 import activityRoutes from "./routes/activityRoute.js"
+import commentRoutes from "./routes/commentRoute.js"
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -20,6 +21,7 @@ app.use(cors());
 /* ROUTES */
 app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/activity',activityRoutes);
+app.use('/api/v1/comment',commentRoutes);
 /* app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);

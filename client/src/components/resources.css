@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #009cff;
+  --secondary-color: #F0FBFF;
+  --accent-color:#D3FBCC;
+}
 .resources-page {
     max-width: 1200px;
     margin: 0 auto;
@@ -39,8 +44,13 @@
   }
   
   .who-description {
+    color: var(--primary-color);
     width: 40%;
     /* Add styles for the WHO description */
+  }
+
+  .who-description p{
+    color: var(--secondary-color);
   }
   
   .who-image {
@@ -64,6 +74,7 @@
     font-weight: bold;
     font-size: 50px;
     text-align: center;
+    color: var(--primary-color);
     /* Add styles for the vaccination heading */
   }
   
@@ -95,6 +106,7 @@
   }
   
   .disease-prevention-description {
+    color: var(--secondary-color);
     width: 40%;
     /* Add styles for the disease prevention description */
   }
@@ -116,8 +128,13 @@
     width: 100%;
     height: 270px;
   }
+
+  .yoga-content h2{
+    color: var(--primary-color);
+  }
   
   .yoga-content {
+    color: var(--secondary-color);
     width: 40%;
     text-align: center;
     /* Add styles for the yoga content */
@@ -147,6 +164,7 @@
     width: 30%;
     position: relative;
     overflow: hidden;
+    background-color: var(--accent-color);
     /* Add styles for the download cards */
   }
   
@@ -206,6 +224,10 @@
     padding: 12px;
     border-radius: 4px;
   }
+
+  .faq-question-header h3{
+    font-size: 20px;
+  }
   
   .faq-question-header:hover {
     background-color: #e0e0e0;
@@ -229,39 +251,94 @@
   .faq-question-header.expanded .faq-arrow {
     transform: rotate(180deg);
   }
+
+  @media (max-width: 768px) {
+    .resources-page {
+      max-width: 100%;
+      padding: 8px;
+    }
+    
+    .who-section {
+      display: block;
+      width: 100%;
+    }
+    
+    .who-description {
+      width: 100%;
+      padding: 8px;
+    }
+    
+    .who-image {
+      width: 100%;
+      margin-top: 18px;
+    }
   
-/*   .video-container {
-    position: relative;
-    width: 70%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .who-image img{
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    
+    .vaccination-heading {
+      font-size: 40px;
+    }
+    
+    .vaccination-video {
+      width: 100%;
+      margin: 10px auto;
+      padding: 8px;
+    }
+  
+    .vaccination-video iframe{
+      width: 100%;
+      height: 400px;
+    }
+    
+    .disease-prevention-section {
+      display: block;
+    }
+    
+    .disease-prevention-gif {
+      width: 100%;
+      padding: 8px;
+    }
+    
+    .disease-prevention-description {
+      width: 100%;
+      font-size: 18px;
+      padding: 8px;
+      margin-top: 10px;
+    }
+    
+    .yoga-section {
+      display: block;
+    }
+    
+    .yoga-left-image,
+    .yoga-right-image {
+      width: 100%;
+    }
+    
+    .yoga-content {
+      width: 100%;
+      font-size: 18px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+  
+    .yoga-video{
+      width: 100%;
+      padding: 8px;
+    }
+    
+    .card-container {
+      display: block;
+      padding: 8px;
+    }
+    
+    .card {
+      width: 100%;
+      overflow: hidden;
+    }
   }
-  
-  .video-container video {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  .play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
-  .play-button svg {
-    fill: #fff;
-    width: 40px;
-    height: 40px;
-  } */

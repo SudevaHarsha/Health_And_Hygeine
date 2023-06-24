@@ -1,7 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const NewsCard = ({ news,onClick }) => {
   const [expanded, setExpanded] = useState(false);
+
+  useEffect(()=>{
+    AOS.init({duration:2000,offset:300});
+  },[])
 
   const handleCardClick = () => {
     setExpanded(!expanded);
@@ -10,7 +16,7 @@ const NewsCard = ({ news,onClick }) => {
 
   console.log(news);
   return (
-    <div className={`news-card ${expanded ? 'expanded' : ''}`}  onClick={handleCardClick}>
+    <div className={`news-card ${expanded ? 'expanded' : ''}`} data-aos="fade-right"  onClick={handleCardClick}>
       <div>
         <div className={`image-container ${expanded ? 'expanded' : ''}`}>
           <img className={` ${expanded ? 'expanded' : ''}`} src={news.image} alt={news.title} />

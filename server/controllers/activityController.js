@@ -4,11 +4,7 @@ import fs from "fs";
 export const ActivityController=async(req,res)=>{
         try{
           const activity = await activityModel.find({})
-          res.status(200).send({
-            success:true,
-            message:"All activity",
-            activity,
-            countTotal:activity.length,
+          res.status(200).json({activity
           });
         } catch (error) {
           console.log(error);

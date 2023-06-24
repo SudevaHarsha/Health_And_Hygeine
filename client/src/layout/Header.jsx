@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import {FaSearch} from "react-icons/fa"
 
 const Header = () => {
+  
   return (
     <header className='header'>
         <div class="left-section">
@@ -18,7 +19,7 @@ const Header = () => {
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/news">News</NavLink></li>
               <li><NavLink to="/resources">Resources</NavLink></li>
-              <li><NavLink to="/testimonials">Testimonials</NavLink></li>
+              <li><NavLink to="/testimonials">Activities</NavLink></li>
               <li><NavLink to="/about">About Us</NavLink></li>
               <li><NavLink to="/get-involved">Get-Involved</NavLink></li>
             </ul>
@@ -29,3 +30,4 @@ const Header = () => {
 }
 
 export default Header
+
