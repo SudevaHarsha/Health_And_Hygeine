@@ -255,7 +255,23 @@
     transform: rotate(180deg);
   }
 
+  .faq-heading{
+    font-size: 30px;
+  }
+
+  .download-heading{
+    font-size: 30px;
+    text-align: center;
+    color: var(--primary-color);
+  }
+
   @media (max-width: 768px) {
+    .download-heading{
+      font-size: 24px;
+    }
+    .faq-heading{
+      font-size: 24px;
+    }
     .resources-page {
       max-width: 100%;
       padding: 8px;
@@ -347,5 +363,6 @@
     .card {
       width: 100%;
       overflow: hidden;
+      margin-top: 10px;
     }
   }

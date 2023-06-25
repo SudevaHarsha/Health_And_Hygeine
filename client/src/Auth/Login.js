@@ -8,6 +8,13 @@ import { useAuth } from "../context/Auth.js";
 
 const Login = () => {
 
+  const regStyles ={
+    color:"black",
+    marginTop:"10px",
+    textAlign:"center",
+    cursor:"pointer",
+  }
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth,setAuth] = useAuth();
@@ -78,6 +85,7 @@ const Login = () => {
           <button type="submit" className="btn btn-primary">
             LOGIN
           </button>
+          <p style={regStyles} onClick={()=>navigate("/register")}>did not register yet?..</p>
         </form>
       </div>
       </div>

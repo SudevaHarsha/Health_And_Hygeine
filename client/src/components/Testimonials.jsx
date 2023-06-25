@@ -5,6 +5,7 @@ import { useAuth } from '../context/Auth';
 import axios from 'axios';
 import AOS from "aos";
 import "aos/dist/aos.css";
+import i3 from "../images/i3.png"
 
 const Testimonials = () => {
 
@@ -128,7 +129,10 @@ const Testimonials = () => {
   
   const activitiesImages = [
       'https://s3-ap-northeast-1.amazonaws.com/assets-eaglenews/2018/05/Australia-Binhi-cleanup-03.jpg',      
-      'activity2.jpg',
+      'https://tse1.mm.bing.net/th?id=OIP.OhiXFJbxQVu2G7hzzjePZQHaD5&pid=Api&P=0&h=180',
+      'https://tse1.mm.bing.net/th?id=OIP.bsGVZCZxvZ8sgc5n47fMEwHaEK&pid=Api&P=0&h=180',
+      'https://www.14news.com/resizer/BPF6BO5CFN6745e3BRkA5k3XQHU=/1200x600/arc-anglerfish-arc2-prod-raycom.s3.amazonaws.com/public/64UCSYDVIFCEDEPAN5TXZ4GBKI.png',
+      'https://tse2.mm.bing.net/th?id=OIP.EtUlRo1MGCXAmtrbUUoUhAHaEK&pid=Api&P=0&h=180',
     // Add more activities here
   ];
   useEffect(()=>{
@@ -144,11 +148,11 @@ const Testimonials = () => {
       {/* <marquee>This is a scrolling text</marquee> */}
       <div className="activities-page">
       <div className="activities-header-image" data-aos="flip-left">
-        <img src="https://tse4.mm.bing.net/th?id=OIP.1C6r-zxwf5cQyQyY4DTs_gHaEK&pid=Api&P=0&h=180" />
+        <img src={i3} />
         <div className="activities-header-text">
-          <h1>Welcome to Activities Page</h1>
+          <h1>Sanitizer Drive</h1>
           <p>
-            <span>{remainingRegistrations}</span> people remaining to register
+            only few slots are left
           </p>
         </div>
         {/* <img className="activities-hurry-up-image" src="https://tse4.mm.bing.net/th?id=OIP.T9qwOpqOiqgsY64-5TdVHAHaFd&pid=Api&P=0&h=180" alt="Hurry Up" /> */}
@@ -166,10 +170,10 @@ const Testimonials = () => {
                 <strong>Day:</strong> {activity.day}
               </p>
               <p className='activity-place'>
-                <strong>Place:</strong> {activity.place}
+                <strong>Place:</strong> {activity.venue}
               </p>
               <p className='activity-status'>
-                <strong>Status:</strong> {activity.status}
+                <strong>Status:</strong> Ongoing (or) about to come
               </p>
               <button onClick={()=>handleInvolvement(activity._id,activity.name,auth.user.id,auth.user.name)} className='activity-button'>Get-Involved</button>
               <p className='activity-members'>

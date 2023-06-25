@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
-/* import "../styles/AuthStyles.css"; */
+import "../styles/AuthStyles.css";
 import Layout from '../layout/Layout';
 
 const Register = () => {
@@ -41,7 +41,7 @@ const Register = () => {
     }
 
   return (
-    <Layout>
+    <div>
         <div className="form-container ">
         <form onSubmit={handleSubmit}>
           <h4 className="title">REGISTER FORM</h4>
@@ -117,7 +117,7 @@ const Register = () => {
           </button>
         </form>
       </div>
-    </Layout>
+    </div>
   )
 }
 

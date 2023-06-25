@@ -16,6 +16,8 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { themeSettings } from './theme';
 import { useSelector } from "react-redux";
 import AdminActivities from './components/AdminActivities';
+import AdminRoute from './routes/AdminRoute';
+import PrivateRoute from './routes/Private';
 
 const App = () => {
   const mode = useSelector((state)=> state.global.mode);
@@ -27,17 +29,22 @@ const App = () => {
           <CssBaseline />
             <Routes>
                 <Route path="/" element={<HomePage/>} />
+                <Route path="/news" element={<News/>} />
                 <Route path="/register" element={<Register/>}></Route>
                 <Route path="/login" element={<Login/>}></Route>
-                <Route path="/about" element={<AboutUs/>} />
-                <Route path="/health-tips" element={<HealthTips/>} />
-                <Route path="/events" element={<Events/>} />
-                <Route path="/resources" element={<Resources/>} />
-                <Route path="/get-involved" element={<GetInvolved/>} />
-                <Route path="/testimonials" element={<Testimonials/>} />
-                <Route path="/activity" element={<Activity/>} />
-                <Route path="/admin-activities" element={<AdminActivities/>} />
-                <Route path="/news" element={<News/>} />
+                <Route path="/user" element={<PrivateRoute />}>
+                  <Route path="resources" element={<Resources/>} />
+                  <Route path="get-involved" element={<GetInvolved/>} />
+                  <Route path="testimonials" element={<Testimonials/>} />
+                  <Route path="about" element={<AboutUs/>} />
+                </Route>
+                <Route path="/admin" element={<AdminRoute />}>
+                  <Route path="activity" element={<Activity/>} />
+                  <Route path="admin-activities" element={<AdminActivities/>} />
+                </Route>
+                
+
+                
             </Routes>
       </ThemeProvider>
     </>

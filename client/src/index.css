@@ -45,7 +45,12 @@ span{
   font-weight: 200;
 }
 .logo {
+  margin-top: 25px;
   font-size: 24px;
+}
+
+.logo p{
+  font-size: 16px;
 }
 
 .search-bar {
@@ -81,6 +86,7 @@ span{
 .navigation li {
   margin-right: 10px;
 }
+
 
 .navigation a {
   color: var(--secondary-color);
@@ -377,8 +383,8 @@ span{
   order: 2;
 }
 
-.card-about.image-right .card-description-about {
-  order: 1;
+.card-about.image-right .card-description-about{
+  order:1;
 }
 
 /*Resouces Page*/
@@ -461,13 +467,14 @@ a:hover {
 }
 
 .activities-header-text h1 {
-  font-size: 32px;
+  font-size: 65px;
+  font-weight: bolder;
   margin: 0;
   color: var(--secondary-color);
 }
 
 .activities-header-text p {
-  font-size: 18px;
+  font-size: 25px;
   margin: 10px 0;
   color: var(--secondary-color);
   opacity: 0.9;
@@ -508,7 +515,7 @@ a:hover {
   min-height: 400px;
   display: flex;
   margin-bottom: 20px;
-  background-image: linear-gradient(to left top, #333333, #555f68, #6c929a, #8fc8bb,#d3fbcc);
+  background-image: linear-gradient(to left top,black,grey);
   border-radius: 8px;
   overflow: hidden;
 }
@@ -549,8 +556,12 @@ a:hover {
 
 .activities-card-details .activity-members{
   position: absolute;
-  bottom: 10px;
-  right: 30px;
+  background-color: white;
+  color: black;
+  width: 200px;
+  border-bottom-left-radius: 15px;
+  top: 0;
+  right: 0;
 }
 
 .activity-button{
@@ -777,6 +788,10 @@ a:hover {
   
   .mobile-navbar-menu.open {
     display: block;
+  }
+
+  .mobile-navbar-logo p{
+    font-size: 20px;
   }
 
   .mobile-navbar-menu li{
