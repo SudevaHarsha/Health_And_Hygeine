@@ -44,7 +44,7 @@ const Testimonials = () => {
     },[])
     const getAllActivities =async()=>{
         try{
-            const res = await axios.get("http://localhost:3500/api/v1/activity/activity");
+            const res = await axios.get("https://healthandhygeinebackend-huew.onrender.com/api/v1/activity/activity");
             setActivities(res?.data?.activity);
             console.log(auth);            
         }catch(error){
@@ -57,7 +57,7 @@ const Testimonials = () => {
             setId(id);
             setShowComments(!showComments);
             console.log(showComments);
-            const res = await axios.get(`http://localhost:3500/api/v1/comment/comment/${id}`);
+            const res = await axios.get(`https://healthandhygeinebackend-huew.onrender.com/api/v1/comment/comment/${id}`);
             setComment(res?.data?.comment);
             setCommentOpen(false);
             console.log(res);
@@ -68,7 +68,7 @@ const Testimonials = () => {
     }
     console.log(showComments);
     const allComments=async()=>{
-      const res = await axios.get(`http://localhost:3500/api/v1/comment/all-comment`);
+      const res = await axios.get(`https://healthandhygeinebackend-huew.onrender.com/api/v1/comment/all-comment`);
       setFullComments(res?.data)
     }
     console.log(fullComments);
@@ -84,7 +84,7 @@ const Testimonials = () => {
             productData.append("email", email);
             productData.append("contact", contact);
         try{
-            const res = await axios.post("http://localhost:3500/api/v1/activity/activity-register",productData);
+            const res = await axios.post("https://healthandhygeinebackend-huew.onrender.com/api/v1/activity/activity-register",productData);
             if(res.data.success){
                 console.log(res.data.message);
             }
@@ -111,7 +111,7 @@ const Testimonials = () => {
         commentData.append("activity", activity);
         commentData.append("description",description); */
         try{
-            const res = await axios.post("http://localhost:3500/api/v1/comment/create-comment",{userId:auth.user.id,activity:aid,description});
+            const res = await axios.post("https://healthandhygeinebackend-huew.onrender.com/api/v1/comment/create-comment",{userId:auth.user.id,activity:aid,description});
             if(res.data.success){
                 console.log(res.data.message);
             }

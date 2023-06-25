@@ -41,7 +41,7 @@ const GetInvolved = () => {
           productData.append("email", email);
           productData.append("contact", contact);
       try{
-          const res = await axios.post("http://localhost:3500/api/v1/activity/activity-register",productData);
+          const res = await axios.post("https://healthandhygeinebackend-huew.onrender.com/api/v1/activity/activity-register",productData);
           if(res.data.success){
               console.log(res.data.message);
           }

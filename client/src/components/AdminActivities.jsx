@@ -27,13 +27,13 @@ const AdminActivities = () => {
     ];
 
     const allComments=async()=>{
-        const res = await axios.get(`http://localhost:3500/api/v1/comment/all-comment`);
+        const res = await axios.get(`https://healthandhygeinebackend-huew.onrender.com/api/v1/comment/all-comment`);
         setFullComments(res?.data);
       }
 
       const getAllActivities =async()=>{
         try{
-            const res = await axios.get("http://localhost:3500/api/v1/activity/activity");
+            const res = await axios.get("https://healthandhygeinebackend-huew.onrender.com/api/v1/activity/activity");
             setActivities(res?.data?.activity);
             console.log(auth);            
         }catch(error){
@@ -43,7 +43,7 @@ const AdminActivities = () => {
 
     const createActivity = async()=>{
       setAddActivity(!addActivity);
-        const res = await axios.post("http://localhost:3500/api/v1/activity/create-activity",{
+        const res = await axios.post("https://healthandhygeinebackend-huew.onrender.com/api/v1/activity/create-activity",{
             name,
             venue,
             day,
