@@ -32,7 +32,7 @@ const Testimonials = () => {
     const [showComments, setShowComments] = useState(false);
 
     const handleInvolvement = (aid,aname,userId,uname)=>{
-      navigate("/get-involved",{state:{userId,aid,aname,uname}});
+      navigate("/user/get-involved",{state:{userId,aid,aname,uname}});
     }
     
     /* const arrayImages =["https://tse1.mm.bing.net/th?id=OIP.1YM53mG10H_U25iPjop83QHaEo&pid=Api&rs=1&c=1&qlt=95&w=198&h=124","https://tse1.mm.bing.net/th?id=OIP.HxV79tFMPfBAIo0BBF-sOgHaEy&pid=Api&rs=1&c=1&qlt=95&w=192&h=124","https://tse1.mm.bing.net/th?id=OIP.fzSnClvueUiDCZNJINMWywHaEK&pid=Api&rs=1&c=1&qlt=95&w=221&h=124"]; */
