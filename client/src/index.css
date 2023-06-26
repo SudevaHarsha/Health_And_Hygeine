@@ -844,6 +844,9 @@ a:hover {
   .mobile-navbar-menu li:nth-child(6){
     animation-delay: 1.6s;
   }
+  .mobile-navbar-menu li:nth-child(7){
+    animation-delay: 1.8s;
+  }
   
   .mobile-navbar-icon {
     z-index: 78;
