@@ -5,10 +5,10 @@ import { CommentController, CreateCommentController, GetAllCommentController, de
 
 const router=express.Router();
 
-router.get('/comment/:id',requireSignin,CommentController);
-router.get('/all-comment',requireSignin,GetAllCommentController);
-router.post('/create-comment',requireSignin,CreateCommentController);
-router.delete('/delete-comment/:cid',requireSignin,deleteCommentController);
+router.get('/comment/:id',CommentController);
+router.get('/all-comment',GetAllCommentController);
+router.post('/create-comment',CreateCommentController);
+router.delete('/delete-comment/:cid',deleteCommentController);
 
 /* router.post('/activity-register',formidable(),activityRegisterController);
 router.post('/activity-register/delete/:rid',deleteActivityRegisterUserController);
