@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 import Layout from '../layout/Layout'
 import "./HomePage.css"
 import Card from './Card'
@@ -19,6 +20,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react'
 
 const HomePage = () => {
+  const [activities,setActivities] = useState([]);
   const images = [
     "https://tse1.mm.bing.net/th?id=OIP.mqxyLa9UevrlHN_EwumcGQHaEK&pid=Api&P=0&h=180",
     "https://tse1.mm.bing.net/th?id=OIP.zlrI1uVuzrm02stclp3UUAHaCo&pid=Api&P=0&h=180",
@@ -27,8 +29,21 @@ const HomePage = () => {
     "https://s3-ap-northeast-1.amazonaws.com/assets-eaglenews/2018/05/Australia-Binhi-cleanup-03.jpg",
   ]
 
+  const getAllActivities =async()=>{
+    try{
+        const res = await axios.get("https://healthandhygeinebackend-huew.onrender.com/api/v1/activity/activity");
+        setActivities(res?.data?.activity);          
+    }catch(error){
+        console.log(error);
+    }       
+}
+
   useEffect(()=>{
     AOS.init({duration:2000,offset:300});
+  },[]);
+
+  useEffect(()=>{
+    getAllActivities();
   },[])
   return(
     <Layout>

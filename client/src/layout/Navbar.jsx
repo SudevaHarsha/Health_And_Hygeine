@@ -39,15 +39,27 @@ const Navbar = ()=>{
                 <ul>
                 <li><NavLink to="/">Home</NavLink></li>
                 <li><NavLink to="/news">News</NavLink></li>
-                <li><NavLink to="/user/resources">Resources</NavLink></li>
-                {auth?.user?.role===1 ? <>
-                <li><NavLink to="/admin/activity">All registered</NavLink></li>
-                <li><NavLink to="/admin/admin-activities">Activities</NavLink></li></>
-                : <li><NavLink to="/user/testimonials">Activities</NavLink></li>
-                }
-                <li><NavLink to="/user/about">About Us</NavLink></li>
-                <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
-                  {/* Add more menu items */}
+                {auth?.user ? <>
+              <li><NavLink to="/resources">Resources</NavLink></li>
+              <li><NavLink to="/about">About Us</NavLink></li>
+              
+              </>            
+              : <>
+              <li><NavLink to="/login">Login</NavLink></li>
+              </>}
+              {auth?.user?.role===1 ? <>
+                {/* <li><NavLink to="/user/resources">Resources</NavLink></li> */}
+              <li><NavLink to="/activity">All registered</NavLink></li>
+              <li><NavLink to="/admin-activities">Activities</NavLink></li>
+              {/* <li><NavLink to="/user/about">About Us</NavLink></li> */}
+              </>
+              : <>{ auth?.user && <>
+              <li><NavLink to="/testimonials">Activities</NavLink></li>
+              </>
+              }
+              </> 
+              }
+              {auth?.user && <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>}
                 </ul>
               </div>
               <div className="mobile-navbar-icon" onClick={toggleMobileMenu}>

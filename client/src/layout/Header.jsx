@@ -35,7 +35,7 @@ const Header = () => {
               {auth?.user ? <>
               <li><NavLink to="/resources">Resources</NavLink></li>
               <li><NavLink to="/about">About Us</NavLink></li>
-              <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
+              
               </>            
               : <>
               <li><NavLink to="/login">Login</NavLink></li>
@@ -52,6 +52,7 @@ const Header = () => {
               }
               </> 
               }
+              {auth?.user && <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>}
               
             </ul>
           </nav>
