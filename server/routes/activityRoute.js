@@ -6,14 +6,14 @@ import formidable from 'express-formidable';
 
 const router=express.Router();
 
-router.get('/activity',ActivityController);
-router.get('/all-activity',getAllRegisteredUsers);
-router.post('/create-activity',CreateActivityController);
-router.put('/update-activity/:id',updateActivityController);
-router.delete('/delete-activity',deleteActivityController);
+router.get('/activity',requireSignin,ActivityController);
+router.get('/all-activity',requireSignin,isAdmin,getAllRegisteredUsers);
+router.post('/create-activity',requireSignin,isAdmin,CreateActivityController);
+router.put('/update-activity/:id',requireSignin,isAdmin,updateActivityController);
+router.delete('/delete-activity',requireSignin,isAdmin,deleteActivityController);
 
-router.post('/activity-register',formidable(),activityRegisterController);
-router.delete('/activity-register/delete/:rid',deleteActivityRegisterUserController);
-router.get('/activity-register/activity',GetActivityRegisterController);
+router.post('/activity-register',formidable(),requireSignin,activityRegisterController);
+router.delete('/activity-register/delete/:rid',requireSignin,isAdmin,deleteActivityRegisterUserController);
+router.get('/activity-register/activity',requireSignin,GetActivityRegisterController);
 
 export default router;

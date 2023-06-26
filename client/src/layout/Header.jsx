@@ -32,16 +32,25 @@ const Header = () => {
             <ul>
               <li><NavLink to="/">Home</NavLink></li>
               <li><NavLink to="/news">News</NavLink></li>
+              {auth?.user ? <>
               <li><NavLink to="/user/resources">Resources</NavLink></li>
-              {auth?.user?.role===1 ? <>
-              <li><NavLink to="/admin/activity">All registered</NavLink></li>
-              <li><NavLink to="/admin/admin-activities">Activities</NavLink></li></>
-              : <li><NavLink to="/user/testimonials">Activities</NavLink></li>
-              }
               <li><NavLink to="/user/about">About Us</NavLink></li>
-              <li>
-                <NavLink to="/login" onClick={handleLogout}>Logout</NavLink>
-              </li>
+              <li><NavLink to="/login" onClick={handleLogout}>Logout</NavLink></li>
+              </>            
+              : <>
+              <li><NavLink to="/login">Login</NavLink></li>
+              </>}
+              {auth?.user?.role===1 ? <>
+                {/* <li><NavLink to="/user/resources">Resources</NavLink></li> */}
+              <li><NavLink to="/admin/activity">All registered</NavLink></li>
+              <li><NavLink to="/admin/admin-activities">Activities</NavLink></li>
+              {/* <li><NavLink to="/user/about">About Us</NavLink></li> */}
+              </>
+              : <>
+              <li><NavLink to="/user/testimonials">Activities</NavLink></li>
+              </>
+              }
+              
             </ul>
           </nav>
         </div>

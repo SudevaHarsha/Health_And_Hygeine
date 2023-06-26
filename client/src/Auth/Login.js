@@ -49,6 +49,7 @@ const Login = () => {
   };
 
   return (
+    <Layout>
     <div className="cont">
       <div className="form-container ">
         <form onSubmit={handleSubmit}>
@@ -88,7 +89,7 @@ const Login = () => {
           <p style={regStyles} onClick={()=>navigate("/register")}>did not register yet?..</p>
         </form>
       </div>
-      </div>
+      </div></Layout>
   )
 }
 
