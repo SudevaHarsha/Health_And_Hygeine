@@ -48,6 +48,7 @@ const GetInvolved = () => {
           else{
               console.log(res.data.message);
           }
+          navigate("/testimonials");
       } catch(err){
           console.log(err);
           console.log("something went wrong");
