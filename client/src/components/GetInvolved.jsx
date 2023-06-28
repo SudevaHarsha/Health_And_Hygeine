@@ -5,7 +5,12 @@ import toast from 'react-hot-toast';
 import "../styles/AuthStyles.css"
 import Layout from '../layout/Layout';
 
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
 const GetInvolved = () => {
+
+  const form = useRef();
 
   /* const [name,setName] = useState(""); */
     const [useraId,setUseraId]= useState();
@@ -48,6 +53,12 @@ const GetInvolved = () => {
           else{
               console.log(res.data.message);
           }
+          emailjs.sendForm('service_3hgs8bs', 'template_egdvnj8', form.current, 'nUcv7KqJIhJ5RUjZg')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
           navigate("/testimonials");
       } catch(err){
           console.log(err);
@@ -59,10 +70,11 @@ const GetInvolved = () => {
   return (
     <Layout>
         <div className="form-container ">
-        <form onSubmit={handleSubmit}>
-          <h4 className="title">REGISTER FORM</h4>
+        <form ref={form} onSubmit={handleSubmit}>
+          <h4 className="title">ACTIVITY REGISTER FORM</h4>
           <div className="mb-3">
               <input
+                name="uname"
                 type="text"
                 /* value={useraId}
                 onChange={(e) => setUseraId(e.target.value)} */
@@ -77,6 +89,7 @@ const GetInvolved = () => {
           <div className="mb-3">
             <input
               type="email"
+              name={email}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
@@ -92,6 +105,7 @@ const GetInvolved = () => {
               onChange={(e) => setActivity(e.target.value)} */
               className="form-control"
               id="exampleInputPassword1"
+              name="aname"
               placeholder={aname}
               required
               disabled
@@ -100,6 +114,7 @@ const GetInvolved = () => {
           <div className="mb-3">
             <input
               type="text"
+              name="contact"
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               className="form-control"

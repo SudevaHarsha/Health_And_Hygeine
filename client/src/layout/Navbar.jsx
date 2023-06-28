@@ -32,7 +32,7 @@ const Navbar = ()=>{
     return <>
               <nav className="mobile-navbar">
               <div className="mobile-navbar-logo">
-                <p>Health and hygeine</p>
+              {auth?.user ? <div class="logo">Health & Hygiene<br></br> <p> welcome {auth?.user?.name}</p></div> : <div class="logo">Health & Hygiene<br></br> <p> welcome </p></div>}
               </div>
               <div className={`mobile-navbar-menu ${isMobileMenuOpen ? 'open' : ''}`}>
                 {/* Mobile menu items */}
@@ -55,6 +55,7 @@ const Navbar = ()=>{
               </>
               : <>{ auth?.user && <>
               <li><NavLink to="/testimonials">Activities</NavLink></li>
+              <li><NavLink to="/involved">Get-Involved</NavLink></li>   
               </>
               }
               </> 

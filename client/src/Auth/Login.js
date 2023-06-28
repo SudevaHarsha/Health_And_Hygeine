@@ -6,7 +6,12 @@ import toast from "react-hot-toast";
 /* import "../styles/AuthStyles.css"; */
 import { useAuth } from "../context/Auth.js";
 
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
+
 const Login = () => {
+
+  const form = useRef();
 
   const regStyles ={
     color:"black",
@@ -38,6 +43,12 @@ const Login = () => {
             token:res.data.token,
         });
         localStorage.setItem('auth',JSON.stringify(res.data));
+        emailjs.sendForm('service_u73ocld', 'template_mcqvhfj', form.current, 'vPK75gA9Ebzz3jI4d')
+       .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
         navigate(location.state ||"/");
       } else {
         toast.error(res.data.message);
@@ -52,12 +63,13 @@ const Login = () => {
     <Layout>
     <div className="cont">
       <div className="form-container ">
-        <form onSubmit={handleSubmit}>
+        <form ref={form} onSubmit={handleSubmit}>
           <h4 className="title">LOGIN FORM</h4>
 
           <div className="mb-3">
             <input
               type="email"
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"

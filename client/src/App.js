@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import AdminActivities from './components/AdminActivities';
 import AdminRoute from './routes/AdminRoute';
 import PrivateRoute from './routes/Private';
+import GetInvolvedNew from './components/GetInvolvedNew';
 
 const App = () => {
   const mode = useSelector((state)=> state.global.mode);
@@ -35,6 +36,7 @@ const App = () => {
 
                   <Route path="/resources" element={<Resources/>} />
                   <Route path="/get-involved" element={<GetInvolved/>} />
+                  <Route path="/involved" element={<GetInvolvedNew/>} />
                   <Route path="/testimonials" element={<Testimonials/>} />
                   <Route path="/about" element={<AboutUs/>} />
 

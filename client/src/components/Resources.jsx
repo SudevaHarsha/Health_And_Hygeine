@@ -147,7 +147,10 @@ const Resources = () => {
 
   return (
     <Layout>
-      <section className="slider-section" data-aos="zoom-in">
+      
+  
+    <div className="resources-page">
+    <section className="slider-section" data-aos="zoom-in">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -168,8 +171,6 @@ const Resources = () => {
         })}
       </Swiper>
       </section>
-  
-    <div className="resources-page">
       <section className="who-section">
         <div className="who-description">
           <h2 data-aos="fade">About WHO</h2>

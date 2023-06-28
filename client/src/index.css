@@ -325,6 +325,7 @@ span{
 /*About us*/
 
 .about-us-page {
+  overflow: hidden;
   max-width: 80%;
   margin: 0 auto;
 }
@@ -884,11 +885,11 @@ a:hover {
   }
   
   .mobile-hamburger:before {
-    top: 30px;
+    bottom: 85px;
   }
   
   .mobile-hamburger:after {
-    top: 50px;
+    top: 80px;
   }
 }
 
@@ -970,6 +971,7 @@ a:hover {
   }
   /*abouut css*/
   .about-us-page {
+    overflow: hidden;
     display: block;
     max-width:100%;
     padding: 8px;

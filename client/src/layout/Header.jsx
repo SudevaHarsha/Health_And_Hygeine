@@ -48,6 +48,7 @@ const Header = () => {
               </>
               : <>{ auth?.user && <>
               <li><NavLink to="/testimonials">Activities</NavLink></li>
+              <li><NavLink to="/involved">Get-Involved</NavLink></li>   
               </>
               }
               </> 

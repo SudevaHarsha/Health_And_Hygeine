@@ -24,7 +24,7 @@ export const CommentController=async(req,res)=>{
 
 export const GetAllCommentController = async(req,res)=>{
   try{
-    const comment = await commentModel.find({}).populate("users");
+    const comment = await commentModel.find({}).sort({createdAt:-1}).populate("users");
     res.status(200).json(comment);
 } catch(err){
     console.log(err);

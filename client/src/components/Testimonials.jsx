@@ -192,7 +192,7 @@ const Testimonials = () => {
                     }>Add Comment</button>
                 </div>
                 <div className="home-card-comment-list" key={activity._id}>
-                  { fullComments.filter((c)=> c.activity===activity._id) 
+                  { fullComments.filter((c)=> c.activity===activity._id)
                   .map((comment, index) => (<div className='commentdes'>
                     <p className='des1' key={index}>{comment.users.name} :</p>
                     {/* <br className='break'></br> */}
