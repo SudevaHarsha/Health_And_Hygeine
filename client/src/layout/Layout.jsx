@@ -11,7 +11,7 @@ const Layout = ({children}) => {
     <div className='fullcontainer'>
         <Header />
         <Navbar />
-        <main style={{minHeight:"85vh"}}>{children}</main>
+        <main style={{minHeight:"70vh"}}>{children}</main>
         <Toaster />
     </div>
   )

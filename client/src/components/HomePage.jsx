@@ -29,6 +29,14 @@ const HomePage = () => {
     "https://s3-ap-northeast-1.amazonaws.com/assets-eaglenews/2018/05/Australia-Binhi-cleanup-03.jpg",
   ]
 
+  const imagesMini =[
+    "https://tse4.mm.bing.net/th?id=OIP.Gzl2e9Z7wF3GkLs_t9-WcAHaHa&pid=Api&P=0&h=180",
+    "https://tse1.mm.bing.net/th?id=OIP.fN04bu9ghESLFEuqOZ545QHaLM&pid=Api&P=0&h=180",
+    "https://tse4.mm.bing.net/th?id=OIP.DQKc4NhncG7WQp2VjEyp7gHaKe&pid=Api&P=0&h=180",
+    "https://tse3.mm.bing.net/th?id=OIP.R02WkqI0sAkTWzK5jhA82AHaKf&pid=Api&P=0&h=180",
+    "https://tse1.mm.bing.net/th?id=OIP.n6zi8hw_fm5s7uAFXXjpwQHaKY&pid=Api&P=0&h=180",
+  ]
+
   const getAllActivities =async()=>{
     try{
         const res = await axios.get("https://healthandhygeinebackend-huew.onrender.com/api/v1/activity/activity");
@@ -65,6 +73,29 @@ const HomePage = () => {
             className="mySwiper"
           >
             {images.map((image)=>{ return (
+              <SwiperSlide><img src={image} /></SwiperSlide>
+            )
+            })}
+          </Swiper>
+        </section>
+      </div>
+      <div className="hero-slider-mini" data-aos="zoom-in">
+        <section className="slider-section">
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              clickable: true,
+            }}
+            /* navigation={true} */
+            modules={[Autoplay, Pagination, Navigation]}
+            className="mySwiper"
+          >
+            {imagesMini.map((image)=>{ return (
               <SwiperSlide><img src={image} /></SwiperSlide>
             )
             })}

@@ -89,7 +89,7 @@ const GetInvolved = () => {
           <div className="mb-3">
             <input
               type="email"
-              name={email}
+              name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"

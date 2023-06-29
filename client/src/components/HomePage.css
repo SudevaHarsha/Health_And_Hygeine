@@ -10,6 +10,9 @@
 .home-page {
     text-align: center;
   }
+  .hero-slider-mini{
+    display: none;
+  }
   
   .section-heading {
     color: var(--primary-color);
@@ -278,6 +281,12 @@
     .swiper {
       width: 50%;
       height: 70%;
+    }
+    .hero-slider{
+      display: none;
+    }
+    .hero-slider-mini{
+      display: block;
     }
     .hygiene-container{
         display: block;

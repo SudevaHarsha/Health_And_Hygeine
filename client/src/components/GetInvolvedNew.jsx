@@ -76,6 +76,7 @@ const GetInvolvedNew = () => {
           <div className="mb-3">
               <input
                 type="text"
+                name={`{auth.user.name}`}
                 className="form-control"
                 id="exampleInputEmail1"
                 placeholder={auth?.user?.name}
@@ -85,6 +86,7 @@ const GetInvolvedNew = () => {
           <div className="mb-3">
             <input
               type="email"
+              name='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
@@ -104,6 +106,7 @@ const GetInvolvedNew = () => {
           <div className="mb-3">
             <input
               type="text"
+              name='contact'
               value={contact}
               onChange={(e) => setContact(e.target.value)}
               className="form-control"
