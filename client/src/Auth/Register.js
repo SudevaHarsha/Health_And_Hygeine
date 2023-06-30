@@ -5,7 +5,11 @@ import toast from 'react-hot-toast';
 import "../styles/AuthStyles.css";
 import Layout from '../layout/Layout';
 
+import { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 const Register = () => {
+
+  const form = useRef();
 
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
@@ -33,6 +37,12 @@ const Register = () => {
             else{
                 toast.error(res.data.message);
             }
+            emailjs.sendForm('service_u73ocld', 'template_mcqvhfj', form.current, 'vPK75gA9Ebzz3jI4d')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
         } catch(err){
             console.log(err);
             toast.error("something went wrong");
@@ -43,11 +53,12 @@ const Register = () => {
   return (
     <div>
         <div className="form-container ">
-        <form onSubmit={handleSubmit}>
+        <form ref={form} onSubmit={handleSubmit}>
           <h4 className="title">REGISTER FORM</h4>
           <div className="mb-3">
             <input
               type="text"
+              name='name'
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="form-control"
@@ -60,6 +71,7 @@ const Register = () => {
           <div className="mb-3">
             <input
               type="email"
+              name='email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="form-control"
@@ -82,6 +94,7 @@ const Register = () => {
           <div className="mb-3">
             <input
               type="text"
+              name='phone'
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               className="form-control"
@@ -93,6 +106,7 @@ const Register = () => {
           <div className="mb-3">
             <input
               type="text"
+              name='address'
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               className="form-control"
@@ -104,6 +118,7 @@ const Register = () => {
           <div className="mb-3">
             <input
               type="text"
+              name='answer'
               value={answer}
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
