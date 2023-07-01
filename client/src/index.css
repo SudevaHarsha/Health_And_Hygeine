@@ -635,6 +635,27 @@ a:hover {
   cursor: pointer;
 }
 
+.btn-reply{
+  color: #19d1e1 !important;
+  background-color: inherit !important;
+  height: auto !important;
+  margin-left: 500px;
+}
+.btn-goback{
+  display: block;
+  font-size: 20px;
+  color: #19d1e1 !important;
+  background-color: inherit !important;
+  height: auto !important;
+}
+
+.hide-reply{
+  display: none;
+}
+.hide-comment{
+  display: none;
+}
+
 .home-card-comment-list {
   max-height: 150px;
   overflow-y: auto;
@@ -1104,5 +1125,8 @@ a:hover {
     height:28px;
     font-size: 12px;
   } 
+  .btn-reply{
+    margin-left: 250px;
+  }
 }
 

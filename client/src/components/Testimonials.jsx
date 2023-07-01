@@ -15,6 +15,9 @@ const Testimonials = () => {
   const [auth]=useAuth();
   const [commentOpen,setCommentOpen] = useState(true);
   const [fullComments,setFullComments] = useState([]);
+  const [fullReplies,setFullReplies] = useState([]);
+  const [reply,setReply]=useState(0);
+  const [commentIdReply,setCommentIdReply]=useState();
     const [open,setOpen]=useState(0);
     const [open2,setOpen2]=useState(0);
     const [activities, setActivities] = useState([]);
@@ -25,7 +28,9 @@ const Testimonials = () => {
     const [aname,setAname]=useState();
     const [activity,setActivity]=useState();
     const [activity2,setActivity2]=useState();
+    const [activity3,setActivity3]=useState();
     const [description,setDescription]=useState();
+    const [descriptionReply,setDescriptionReply]=useState();
     const [comment,setComment]=useState();
     const [email,setEmail]=useState();
     const [contact,setContact]=useState();
@@ -72,6 +77,14 @@ const Testimonials = () => {
       setFullComments(res?.data)
     }
     console.log(fullComments);
+
+    const allReplies=async(reid)=>{
+      const res = await axios.get(`https://healthandhygeinebackend-huew.onrender.com/api/v1/reply/reply/${reid}`);
+      setCommentIdReply(reid);
+      console.log(res);
+      setFullReplies(res?.data?.reply);
+      console.log(fullReplies);
+    }
     const handleSubmit = async(e) =>{
         e.preventDefault();
         /* console.log(auth.user);
@@ -126,6 +139,24 @@ const Testimonials = () => {
             console.log("something went wrong");
         }
     }
+
+    const writeReply=async()=>{
+      try{
+          const res = await axios.post("https://healthandhygeinebackend-huew.onrender.com/api/v1/reply/reply",{users:auth.user.id,comment:commentIdReply,description:descriptionReply});
+          if(res.data.success){
+              console.log(res.data.message);
+          }
+          else{
+              console.log(res.data.message);
+          }
+          setDescriptionReply("");
+          allReplies(commentIdReply);
+          /* getAllCommentsById(); */
+      } catch(err){
+          console.log(err);
+          console.log("something went wrong");
+      }
+  }
   
   const activitiesImages = [
       'https://s3-ap-northeast-1.amazonaws.com/assets-eaglenews/2018/05/Australia-Binhi-cleanup-03.jpg',      
@@ -179,7 +210,7 @@ const Testimonials = () => {
               <p className='activity-members'>
                  58 members registered
               </p>
-              <div className="home-card-comments">
+              <div className={` ${activity3===activity._id && reply ? 'hide-comment' : 'home-card-comments'}`}>
                 <div className="home-card-comment-input">
                   <input
                     type="text"
@@ -197,10 +228,43 @@ const Testimonials = () => {
                     <p className='des1' key={index}>{comment.users.name} :</p>
                     {/* <br className='break'></br> */}
                     <p className='des2' key={index}>{comment.description}</p>
+                    <button className='btn-reply' onClick={()=>{
+                      setReply(1);
+                      allReplies(comment._id);
+                      setActivity3(comment.activity);
+                    }}>replies</button>
+                    <p className='line-comment'></p>
                     </div>
                   ))}
                 </div>
               </div>
+              {activity3===activity._id && <div className={` ${reply ? 'home-card-comments' : 'hide-reply'}`}>
+                <div className="home-card-comment-input">
+                  <input
+                    type="text"
+                    placeholder="Add a reply"
+                    value={descriptionReply}
+                    onChange={(e)=>setDescriptionReply(e.target.value)}
+                  />
+                  <button onClick={
+                    writeReply
+                    }>Add Reply</button>
+                </div>
+                <div className="home-card-comment-list" key={activity._id}>
+                  <button className='btn-goback' onClick={()=>{
+                      setReply(0);
+                      setFullReplies([]);
+                    }}>&larr;</button>
+                  { fullReplies && fullReplies .map((reply, index) => (<div className='commentdes'>
+                    <p className='des1' key={index}>{reply.users.name} :</p>
+                    {/* <br className='break'></br> */}
+                    <p className='des2' key={index}>{reply.description}</p>
+                    
+                    </div>
+                  ))}
+                </div>
+
+              </div>}
             </div>
           </div>
         ))}
