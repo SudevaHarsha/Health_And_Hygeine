@@ -8,6 +8,7 @@ import morgan from "morgan";
 import authRoutes from "./routes/authRoute.js";
 import activityRoutes from "./routes/activityRoute.js"
 import commentRoutes from "./routes/commentRoute.js"
+import replyRoutes from "./routes/replyRoute.js"
 dotenv.config();
 const app = express();
 app.use(express.json());
