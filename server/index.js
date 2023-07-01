@@ -22,6 +22,7 @@ app.use(cors());
 app.use('/api/v1/auth',authRoutes);
 app.use('/api/v1/activity',activityRoutes);
 app.use('/api/v1/comment',commentRoutes);
+app.use('/api/v1/reply',replyRoutes);
 /* app.use("/client", clientRoutes);
 app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
