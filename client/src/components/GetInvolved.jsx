@@ -4,6 +4,7 @@ import { useNavigate,useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import "../styles/AuthStyles.css"
 import Layout from '../layout/Layout';
+import { useAuth } from '../context/Auth';
 
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
@@ -11,6 +12,7 @@ import emailjs from '@emailjs/browser';
 const GetInvolved = () => {
 
   const form = useRef();
+  const [auth] = useAuth();
 
   /* const [name,setName] = useState(""); */
     const [useraId,setUseraId]= useState();
