@@ -15,6 +15,7 @@ const GetInvolved = () => {
   /* const [name,setName] = useState(""); */
     const [useraId,setUseraId]= useState();
     const [email,setEmail]=useState();
+    const [err,setErr]=useState(0);
     const [contact,setContact]=useState();
     const [activity,setActivity]=useState();
     const [otherPage,setOtherPage] = useState();
@@ -48,6 +49,7 @@ const GetInvolved = () => {
       try{
           const res = await axios.post("https://healthandhygeinebackend-huew.onrender.com/api/v1/activity/activity-register",productData);
           if(res.data.success){
+            setErr(0);
               console.log(res.data.message);
           }
           else{
@@ -61,6 +63,11 @@ const GetInvolved = () => {
           });
           navigate("/testimonials");
       } catch(err){
+        if(err.response.status===404){
+          /*  console.log(res.data.message); */
+           setErr(1);
+           return
+         }
           console.log(err);
           console.log("something went wrong");
       }
@@ -72,6 +79,7 @@ const GetInvolved = () => {
         <div className="form-container ">
         <form ref={form} onSubmit={handleSubmit}>
           <h4 className="title">ACTIVITY REGISTER FORM</h4>
+          <p className={err?'alreg':''}>{auth?.user?.name} is already registered</p>
           <div className="mb-3">
               <input
                 name="uname"

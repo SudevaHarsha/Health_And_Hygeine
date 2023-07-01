@@ -2,17 +2,30 @@ import activityRegistrationModel from "../models/activityRegistration.js";
 import userModel from "../models/userModel.js";
 
 export const activityRegisterController = async(req,res)=>{
-    try{
-        /* const {users} = req.params; */
-        const {userId,activity,email,contact} = req.fields;
-        const user = await userModel.findById({_id:userId});
-        if(!user) return res.status(400).json("user not found");
+  try{
+      /* const {users} = req.params; */
+      const {userId,activity,email,contact} = req.fields;
+      const user = await userModel.findById({_id:userId});
+      if(!user) return res.status(400).json("user not found");
+      let existingUser = await activityRegistrationModel.findOne({users:userId,activity:activity}).exec();
+      
+
+      console.log(existingUser);
+      if(!existingUser){
         const activityUser = await activityRegistrationModel.create({users:userId,activity,email,contact});
-        res.status(201).json(activityUser);
-    } catch(err){
-        console.log(err);
-        res.status(500).send({err});
-    }
+      res.status(201).json(activityUser);
+      }
+      else{
+      
+       res.status(404).send({
+       message:"user already registered",
+      
+      });
+      }
+  } catch(err){
+      console.log(err);
+      res.status(500).send({err});
+  }
 };
 export const getAllRegisteredUsers = async(req,res)=>{
     try{
