@@ -69,3 +69,10 @@ select{
   font-size: 16px;
   outline: none;
 }
+
+.alreg{
+  text-align: center;
+  align-items: center;
+  font-size: 18px;
+  color:red;
+}
