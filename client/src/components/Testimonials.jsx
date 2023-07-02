@@ -6,6 +6,7 @@ import axios from 'axios';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import i3 from "../images/i3.png"
+import { FaThumbsUp } from 'react-icons/fa';
 
 const Testimonials = () => {
 
@@ -14,8 +15,10 @@ const Testimonials = () => {
 
   const [auth]=useAuth();
   const [commentOpen,setCommentOpen] = useState(true);
+  const [commentLike,setCommentLike] = useState([]);
   const [fullComments,setFullComments] = useState([]);
   const [fullReplies,setFullReplies] = useState([]);
+  const [fullLikes,setFullLikes] = useState([]);
   const [reply,setReply]=useState(0);
   const [commentIdReply,setCommentIdReply]=useState();
     const [open,setOpen]=useState(0);
@@ -35,6 +38,23 @@ const Testimonials = () => {
     const [email,setEmail]=useState();
     const [contact,setContact]=useState();
     const [showComments, setShowComments] = useState(false);
+
+    const allUserLikes = async()=>{
+      try{
+        let uId=auth.user.id;
+        const res = await axios.get(`https://healthandhygeinebackend-huew.onrender.com/api/v1/like/all-user-likes/${uId}`);
+        
+        console.log(res);
+        setCommentLike(res?.data?.like);
+        localStorage.setItem('commentLike',JSON.stringify(res.data));
+      } catch(err){
+        console.log(err);
+      }
+     }
+
+     useEffect(()=>{
+      allUserLikes();
+    },[auth]);
 
     const handleInvolvement = (aid,aname,userId,uname)=>{
       navigate("/get-involved",{state:{userId,aid,aname,uname}});
@@ -77,6 +97,37 @@ const Testimonials = () => {
       setFullComments(res?.data)
     }
     console.log(fullComments);
+
+    const like=async(comment)=>{
+      const check= commentLike.find((commentId)=> commentId===comment);
+      if(!check){
+        try{
+          const res = await axios.post(`https://healthandhygeinebackend-huew.onrender.com/api/v1/like/like`,{users:auth.user.id,comment:comment,thumbsup:1});
+          console.log(res.data.message);
+          allLikes();
+        }
+        catch(err){
+          console.log(err.data.message);
+        }
+      }
+      else{
+        try{
+          const res = await axios.delete(`https://healthandhygeinebackend-huew.onrender.com/api/v1/like/like/${check}/${auth.user.id}`);
+          allUserLikes();
+          allLikes();
+        }
+        catch(err){
+          console.log(err.data.message);
+        }
+      }
+
+    }
+    
+    const allLikes = async()=>{
+      const res = await axios.get(`https://healthandhygeinebackend-huew.onrender.com/api/v1/like/all-likes`);
+      setFullLikes(res.data.like);
+      console.log(fullLikes);
+    }
 
     const allReplies=async(reid)=>{
       const res = await axios.get(`https://healthandhygeinebackend-huew.onrender.com/api/v1/reply/reply/${reid}`);
@@ -168,6 +219,7 @@ const Testimonials = () => {
   ];
   useEffect(()=>{
     allComments();
+    allLikes();
   },[])
   return (
     <Layout>
@@ -228,11 +280,18 @@ const Testimonials = () => {
                     <p className='des1' key={index}>{comment.users.name} :</p>
                     {/* <br className='break'></br> */}
                     <p className='des2' key={index}>{comment.description}</p>
-                    <button className='btn-reply' onClick={()=>{
-                      setReply(1);
-                      allReplies(comment._id);
-                      setActivity3(comment.activity);
-                    }}>replies</button>
+                    <div className='btn-cont'>
+                      <button className={`like-btn ${ commentLike && commentLike.find((commentId)=> commentId===comment._id) ? 'thumbsup-btn' : ''}`}onClick={()=>{
+                          setCommentLike([...commentLike,comment._id]);
+                          like(comment._id);
+                        }}><FaThumbsUp /> <span className='likesNo'>{fullLikes && fullLikes.filter((like)=> like.comment === comment._id).length
+                        }</span></button>
+                      <button className='btn-reply' onClick={()=>{
+                        setReply(1);
+                        allReplies(comment._id);
+                        setActivity3(comment.activity);
+                      }}>replies</button>
+                    </div>
                     <p className='line-comment'></p>
                     </div>
                   ))}

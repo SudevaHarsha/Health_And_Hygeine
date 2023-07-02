@@ -17,7 +17,7 @@
 /* font-family: 'Poppins', sans-serif; */
 /* font-family: 'Playfair Display', serif; */
 
-body{
+.fullcontainer{
   background-image: linear-gradient(to right top, #333, #2b333e, #3b414f);
 }
 
@@ -92,7 +92,7 @@ span{
   color: var(--secondary-color);
   text-decoration: none;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: color 0.3s, background-color 0.3s;
   margin-right:20px ;
 }
@@ -325,9 +325,9 @@ span{
 /*About us*/
 
 .about-us-page {
-  overflow: hidden;
   max-width: 80%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .about-us-page h1 {
@@ -520,7 +520,6 @@ a:hover {
   border-radius: 8px;
   overflow: hidden;
 }
-
 .activities-card-image {
   flex: 1;
   display: flex;
@@ -634,19 +633,23 @@ a:hover {
   border-radius: 4px;
   cursor: pointer;
 }
-
 .btn-reply{
   color: #19d1e1 !important;
   background-color: inherit !important;
   height: auto !important;
-  margin-left: 500px;
 }
 .btn-goback{
-  display: block;
   font-size: 20px;
   color: #19d1e1 !important;
   background-color: inherit !important;
   height: auto !important;
+}
+.home-card-comment-list {
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .hide-reply{
@@ -656,12 +659,57 @@ a:hover {
   display: none;
 }
 
-.home-card-comment-list {
-  max-height: 150px;
-  overflow-y: auto;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.btn-cont{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-top: 4px;
+}
+
+.like-btn{
+  height: auto !important;
+  background-color: inherit !important;
+  transition: all 1s ease-in-out !important;
+}
+
+.thumbsup-btn{
+  color: gold !important;
+  animation: myAnim 2s ease 0s 1 normal forwards !important;
+}
+
+.likesNo{
+  font-size: 10px !important;
+  margin-left: 4px;
+  margin-top: 7px;
+}
+
+@keyframes myAnim {
+	0% {
+    color: gold !important;
+		animation-timing-function: ease-out;
+		transform: scale(1.8);
+		transform-origin: center center;
+	}
+
+	10% {
+		animation-timing-function: ease-in;
+		transform: scale(0.91);
+	}
+
+	17% {
+		animation-timing-function: ease-out;
+		transform: scale(0.98);
+	}
+
+	33% {
+		animation-timing-function: ease-in;
+		transform: scale(0.87);
+	}
+
+	45% {
+		animation-timing-function: ease-out;
+		transform: scale(1);
+	}
 }
 
 .commentdes{
@@ -675,8 +723,8 @@ a:hover {
 } */
 
 .home-card-comment-list button{
+  display: flex;
   height: 36px;
-  padding: 0 12px;
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -712,7 +760,7 @@ a:hover {
   font-size: 14px;
   margin-top: 4px;
   text-indent: 42px;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc !important;
   padding: 0;
 }
 
@@ -906,11 +954,11 @@ a:hover {
   }
   
   .mobile-hamburger:before {
-    bottom: 85px;
+    top: 80px;
   }
   
   .mobile-hamburger:after {
-    top: 80px;
+    top: 58px;
   }
 }
 
@@ -992,7 +1040,6 @@ a:hover {
   }
   /*abouut css*/
   .about-us-page {
-    overflow: hidden;
     display: block;
     max-width:100%;
     padding: 8px;
@@ -1125,8 +1172,8 @@ a:hover {
     height:28px;
     font-size: 12px;
   } 
-  .btn-reply{
+  /* .btn-reply{
     margin-left: 250px;
-  }
+  } */
 }
 

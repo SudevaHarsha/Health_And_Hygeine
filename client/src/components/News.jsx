@@ -25,28 +25,7 @@ const News = () => {
       
       Ongoing investigations reported that the patient did not have any direct contact with pigs, however, two of her close contacts worked at the swine farm. The two contacts did not develop respiratory disease and tested negative for influenza. To date, no human-to-human transmission associated with this case has been identified. 
       
-      During hospitalization, a nasopharyngeal swab sample was collected from the patient for influenza and SARS-CoV-2 testing, as part of regular respiratory virus surveillance activities. Real-time Polymerase Chain Reaction (RT-PCR) was conducted at the State of Paraná Central Public Health Laboratory, where the sample was subtyped as an influenza A/H1 virus. The sample also tested positive for a swine influenza A virus marker by RT-PCR. 
-      
-      The specimen was forwarded to the National Influenza Centre Oswaldo Cruz Foundation, in Rio de Janeiro, where further complementary analyses and genomic sequencing were performed. Samples received at the NIC on 25 May were confirmed to be an influenza A(H1N1)v virus by sequence analysis on 30 May. The recovered genome has a high identity (99%) with the haemagglutinin (HA) of other Influenza A(H1N1)v viruses previously detected in the municipality of Toledo state of Paraná in 2022. In addition, it has 96% identity with the HA of viruses collected from pigs in Brazil in 2015.
-      
-      On 8 June, after the Brazilian Ministry of Health (MoH) notified WHO under the IHR, the NIC started the process to send the patient's samples to the WHO Collaborating Centre at the United States Centers for Disease Control and Prevention (US CDC) for further characterization. 
-      
-      Epidemiology of the disease
-      
-      Influenza A(H1) viruses are enzootic in swine populations in most regions of the world. When an influenza virus that normally circulates in swine is detected in a person, it is called a “variant influenza virus”. H1N1, H1N2 and H3N2 are major subtypes of swine influenza A viruses in pigs and occasionally infect humans, usually after direct or indirect exposure to pigs or contaminated environments.
-      
-      Human infections with variant viruses tend to result in mild clinical illness, although some cases have been hospitalized with more severe disease and some have been fatal.
-      
-      To date, sporadic human infections caused by influenza A(H1N1)v and A(H1N2)v viruses have been reported in Brazil, and there has been no evidence of sustained human-to-human transmission.
-      
-      This is the first human infection caused by an influenza A(H1N1)v virus reported in 2023 in Brazil, and the third human infection reported in the state of Parana (the first was detected in 2021 and the second in 2022).
-      
-      Public health response
-      Local and national health authorities implemented the following public health measures:
-      
-      Conducting further epidemiological investigations, and follow-up of contacts in the family, community, and health care facilities.
-      Monitoring the surveillance of influenza-like illness (ILI) and severe acute respiratory infections (SARI) in the surrounding municipalities (within the same health region), particularly influenza virus, seeking to analyze the behavior and trends of respiratory viruses in the region.
-      Reinforcing the vaccination campaign for seasonal influenza in at-risk groups`,
+      `,
     },
     {
       id: 2,
