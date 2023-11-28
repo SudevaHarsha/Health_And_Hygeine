@@ -211,7 +211,7 @@ Preventing diabetes is crucial for maintaining overall health and well-being. Di
       </div>
       <div className="resources-section">
         <img src="https://www.pinerichland.org/cms/lib/PA01001138/Centricity/Domain/972/health%20wellness.png" alt="Resources" className="resources-image" data-aos="fade-up" />
-        <Link href="/resources" className="resources-link">Explore Resources</Link>
+        <Link to="/resources" className="resources-link">Explore Resources</Link>
       </div>
     </div>
 
